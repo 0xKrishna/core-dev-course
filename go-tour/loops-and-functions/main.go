@@ -6,13 +6,15 @@ import (
 )
 
 func Sqrt(x float64) float64 {
-	z := 1.0
+	z := 2.0
 	itr := 0
+
 	for diff := 1.0; math.Abs(diff) > 1e-10; itr++ {
 		diff = (z*z - x) / (2 * z)
 		z -= diff
 	}
 	fmt.Println("Iterations : ", itr)
+
 	return z
 }
 
