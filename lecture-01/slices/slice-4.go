@@ -4,7 +4,7 @@ import "fmt"
 
 // Take the last number of slice, return it to the user, and remove this element from slice.
 
-func Slice_4(s []int) int {
+func Slice_4(s []int) ([]int, int) {
 	fmt.Println("Take the last number of slice, return it to the user, and remove this element from slice.")
 	fmt.Println("Slice_4 - Slice before taking last element:", s)
 
@@ -15,8 +15,8 @@ func Slice_4(s []int) int {
 		fmt.Println("Slice_4 - Slice after taking last element:", s)
 		fmt.Println("Slice_4 - Last element:", last)
 
-		return last
+		return s, last
 	}
 
-	return 0
+	return s, 0
 }
