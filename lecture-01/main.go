@@ -1,74 +1,77 @@
 package main
 
 import (
+	"crypto/rand"
 	"fmt"
+	"log"
+	"math/big"
 
 	"github.com/0xKrishna/core-dev-course/lecture-01/maps"
 	"github.com/0xKrishna/core-dev-course/lecture-01/slices"
 )
 
-var input = []int{1, 2, 3, 4, 5}
+var fixedSlice1 = []int{1, 2, 3, 4, 5}
 
 func main() {
 	fmt.Printf("\nCore Dev Course - Lecture 01\n\n")
 
-	slices.Slice_1(input, 2)
+	slices.Slice_1(randomIntSlice(5), 2)
 
 	outputSeparator()
 
-	slices.Slice_2(input, 3)
+	slices.Slice_2(randomIntSlice(5), 3)
 
 	outputSeparator()
 
-	slices.Slice_3(input, 4)
+	slices.Slice_3(randomIntSlice(5), 4)
 
 	outputSeparator()
 
-	slices.Slice_4(input)
+	slices.Slice_4(randomIntSlice(5))
 
 	outputSeparator()
 
-	slices.Slice_5(input)
+	slices.Slice_5(randomIntSlice(5))
 
 	outputSeparator()
 
-	slices.Slice_6(input, 3)
+	slices.Slice_6(randomIntSlice(5), 3)
 
 	outputSeparator()
 
-	slices.Slice_7(input, []int{3, 4, 5, 6, 7})
+	slices.Slice_7(fixedSlice1, []int{3, 4, 5, 6, 7})
 
 	outputSeparator()
 
-	slices.Slice_8(input, []int{2, 3, 4})
+	slices.Slice_8(fixedSlice1, []int{2, 3, 4})
 
 	outputSeparator()
 
-	slices.Slice_9(input)
+	slices.Slice_9(randomIntSlice(5))
 
 	outputSeparator()
 
-	slices.Slice_10(input, 2)
+	slices.Slice_10(randomIntSlice(5), 2)
 
 	outputSeparator()
 
-	slices.Slice_11(input)
+	slices.Slice_11(randomIntSlice(5))
 
 	outputSeparator()
 
-	slices.Slice_12(input, 3)
+	slices.Slice_12(randomIntSlice(5), 3)
 
 	outputSeparator()
 
-	slices.Slice_13(input)
+	slices.Slice_13(randomIntSlice(5))
 
 	outputSeparator()
 
-	slices.Slice_14(input)
+	slices.Slice_14(randomIntSlice(5))
 
 	outputSeparator()
 
-	slices.Slice_15(input, []string{"Krishna", "Sandeep", "Arpit", "Shivam", "Manav"})
+	slices.Slice_15(randomIntSlice(5), []string{"Krishna", "Sandeep", "Arpit", "Shivam", "Manav"})
 
 	outputSeparator()
 
@@ -76,7 +79,7 @@ func main() {
 
 	outputSeparator()
 
-	maps.Map_2([]int{434, 23, 232, 121, 234})
+	maps.Map_2(randomIntSlice(10))
 
 	outputSeparator()
 
@@ -109,4 +112,22 @@ func main() {
 
 func outputSeparator() {
 	fmt.Printf("\n-----------------------------------------------------\n\n")
+}
+
+func randomIntSlice(size int) []int {
+	slice := make([]int, size)
+	for i := 0; i < size; i++ {
+		slice[i] = randomNumber()
+	}
+
+	return slice
+}
+
+func randomNumber() int {
+	n, err := rand.Int(rand.Reader, big.NewInt(1000))
+	if err != nil {
+		log.Fatal("error generating random number:", err)
+	}
+
+	return int(n.Int64())
 }

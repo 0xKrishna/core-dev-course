@@ -9,9 +9,7 @@ func Slice_13(s []int) []int {
 	fmt.Println("Slice_13 - Original Slice:", s)
 
 	copyArr := make([]int, len(s))
-	for i := 0; i < len(s); i++ {
-		copyArr[i] = s[i]
-	}
+	copy(copyArr, s)
 
 	fmt.Println("Slice_13 - Copy of the Slice:", copyArr)
 
