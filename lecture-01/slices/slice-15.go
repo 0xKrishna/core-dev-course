@@ -4,19 +4,24 @@ import "fmt"
 
 // Sort slice in the given order: direct, reverse, lexicographic (you'd need at least []int and []string).
 
-func Slice_15(s []int, a []string) {
+func Slice_15(s []int, a []string) ([]int, []int, []string) {
 	fmt.Println("Sort slice in the given order: direct, reverse, lexicographic (you'd need at least []int and []string).")
 	fmt.Println("Slice_15 - Slice int:", s)
 	fmt.Println("Slice_15 - Slice string:", a)
 
+	s1 := make([]int, len(s))
+	copy(s1, s)
+
 	s = sortSliceDirect(s)
 	fmt.Println("Slice_15 - Direct:", s)
 
-	s = sortSliceReverse(s)
-	fmt.Println("Slice_15 - Reverse:", s)
+	s1 = sortSliceReverse(s1)
+	fmt.Println("Slice_15 - Reverse:", s1)
 
 	a = sortSliceLexicographic(a)
 	fmt.Println("Slice_15 - Lexicographic:", a)
+
+	return s, s1, a
 }
 
 func sortSliceDirect(s []int) []int {

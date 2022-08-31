@@ -4,7 +4,7 @@ import "fmt"
 
 // Take the first slice number, return it to the user, and delete this element from slice.
 
-func Slice_5(s []int) int {
+func Slice_5(s []int) ([]int, int) {
 	fmt.Println("Take the first slice number, return it to the user, and delete this element from slice.")
 	fmt.Println("Slice_5 - Slice before taking first element:", s)
 
@@ -15,8 +15,8 @@ func Slice_5(s []int) int {
 		fmt.Println("Slice_5 - Slice after taking first element:", s)
 		fmt.Println("Slice_5 - First element:", first)
 
-		return first
+		return s, first
 	}
 
-	return 0
+	return s, 0
 }
