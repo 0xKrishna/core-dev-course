@@ -35,3 +35,11 @@ jobs:
       - name: Lint
         if: runner.os == 'Linux'
         run: make lint
+
+      - name: Test
+        run: make test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./cover.out
